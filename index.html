@@ -1,20 +1,68 @@
 <!DOCTYPE html>
-<html lang="">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
-  <title>Grave Jumper</title>
-</head>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='styles.css'>
+    <title>Grave Jumper</title>
+  </head>
 
-<body>
-    <h1 align="center">Grave Jumper</h1>
-    <center><img src="assets/Gravestone.jpg"/></center>
-    <div align="center">
-        <input type="button" value="Start" onclick="jumper()" align="center" />
+  <body>
+
+    <div class='header'>
+      <h1 align='center'>Grave Jumper</h1>
+      <p class='header-tag'>Who is the fool?</p>
     </div>
-    <script src="jumper.js"></script>
-</body>
+
+    <div id='window-start'>
+      <img src='assets/Gravestone.png' id='btn-start' onclick='jumper()'/>
+    </div>
+
+    <div id='window-game'>
+
+      <div class='characters'>
+
+        <div class='panel'>
+          <div id='player-name' class='name'>Player</div>
+          <div class='stat-label'>Luck</div>
+          <div id='player-luck' class='stat'>12</div>
+          <div class='stat-label'>Suck-Up Level</div>
+          <div id='suck-ups' class='stat'>88</div>
+        </div>
+
+        <div class='panel'>
+          <div id='victim-name' class='name'>Victim Name</div>
+          <div class='stat-label'>Difficulty</div>
+          <div id='difficulty' class='stat'>56</div>
+        </div>
+
+        <div class='score-box'>
+          <div class='score-label'>Score</div>
+          <div id='score'>66</div>
+      </div>
+
+    </div>
+
+
+    <div id='story-box'>info goes here</div>
+
+    <button id='btn-next'>Success! Continue on your way.</button>
+
+    <div class='actions'>
+      <button id='btn-compliment'>Compliment</button>
+      <button id='btn-lie'>Lie It Up</button>
+      <button id='btn-quit'>Come Clean</button>
+    </div>
+
+
+    <div id='result'>
+      <div class='score-label'>Final Score</div>
+      <div id='final-score'>20<div>
+      <button id='btn-reset'>Try Again?</div>
+    </div>
+
+  </body>
+
+  <script src='scripts.js'></script>
 
 </html>

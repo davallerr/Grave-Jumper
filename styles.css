@@ -1,0 +1,207 @@
+
+@import url('https://fonts.googleapis.com/css?family=Creepster|Lato');
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: #222;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 6em;
+  color: #961d13;
+  letter-spacing: .1em;
+  margin-bottom: 0;
+}
+
+.header {
+  margin-bottom: 2em;
+}
+
+.header-tag {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin: 0 auto;
+  background: #444;
+  color: #111;
+  width: 50%;
+  min-width: 15em;
+  padding: .2em;
+}
+
+#window-start {
+  height: 30em;
+  margin: 2em auto;
+}
+
+#btn-start {
+  margin: 0 auto;
+  display: block;
+}
+
+#btn-start:hover {
+  opacity: .5;
+}
+
+#window-game {
+  height: 32em;
+  margin: 2em auto;
+  background: #888;
+  width: 100%;
+  max-width: 60em;
+  box-shadow: 0 .1em .5em #000;
+}
+
+.characters {
+  width: 100%;
+  height: 17em;
+  margin-bottom: 1.5em;
+}
+
+.panel {
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 15em;
+  padding: 2em 0;
+}
+
+.name {
+  font-size: 2.5em;
+}
+
+.stat-label {
+  font-size: 1.2em;
+  margin-top: .5em;
+}
+
+.stat {
+  font-size: 3em;
+  color: #961d13;
+}
+
+.score-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #961d13;
+  color: #fff;
+  border-radius: 100%;
+  padding: 2em;
+  width: 7em;
+  height: 7em;
+}
+
+.score-label {
+  font-size: 1.5em;
+}
+
+#score {
+  font-family: 'Creepster', cursive;
+  font-size: 5em;
+}
+
+#story-box {
+  background: #fff;
+  height: 2.5em;
+  width: 50rem;
+  margin: 0 auto;
+  position: relative;
+}
+
+.actions {
+  display: block;
+  margin: 1em auto;
+  width: 100%;
+}
+
+button {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  padding: .5em;
+  font-family: 'Lato', sans-serif;
+}
+
+button:hover {
+  box-shadow: 0 .1em .2em #666;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+#btn-next {
+  background: #961d13;
+  color: #fff;
+  border-radius: 20px;
+  margin: 1em auto;
+  padding: .5em 1.5em;
+  font-size: 1em;
+}
+
+#btn-compliment {
+  background: #666;
+  color: #fff;
+  font-size: 1.2em;
+  margin-right: .5rem;
+}
+
+#btn-compliment:hover {
+  background: #444;
+}
+
+#btn-lie {
+  background: #961d13;
+  color: #fff;
+  font-family: 'Creepster', cursive;
+  font-size: 2em;
+  margin-right: .5rem;
+  padding: .5em;
+}
+
+#btn-lie:hover {
+  background: #7a1810;
+}
+
+#btn-quit {
+  background: #ccc;
+  color: #111;
+  font-size: 1.2em;
+}
+
+#btn-quit:hover {
+  background: #fff;
+}
+
+#result {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #961d13;
+  border-radius: 100%;
+  padding: 2em;
+  width: 9em;
+  height: 9em;
+}
+
+#final-score {
+  font-family: 'Creepster', cursive;
+  font-size: 5em;
+}
+
+#btn-reset {
+  position: absolute;
+  top: 140%;
+  transform: translateX(-50%);
+  background: #961d13;
+  color: #fff;
+  border-radius: 20px;
+  padding: .5em 1.5em;
+  font-size: 1rem;
+  width: 10em;
+}
