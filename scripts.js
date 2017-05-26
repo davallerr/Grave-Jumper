@@ -70,7 +70,7 @@ function jumper() {
       document.getElementById('btn-next').style.visibility = 'hidden';
 
       // set round info
-      difficulty = Math.floor(Math.random() * ((round) * 2)) + round;
+      roundDifficulty = Math.floor(Math.random() * ((round) * 2)) + round;
       roundScore = 10;
 
       // populate round information
@@ -91,13 +91,15 @@ function jumper() {
   function showResult() {
     // show result display
     document.getElementById('result').style.display = 'block';
-    gamePlaying = false;
+    document.getElementById('final-score').textContent = playerScore;
     document.getElementById('btn-reset').addEventListener('click', init);
 
     // remove function of action buttons
     document.getElementById('btn-compliment').removeEventListener('click', compliment);
     document.getElementById('btn-lie').removeEventListener('click', lie);
     document.getElementById('btn-quit').removeEventListener('click', comeClean);
+
+    gamePlaying = false;
   }
 
   // function to lie to victim
@@ -121,7 +123,8 @@ function jumper() {
         document.getElementById('btn-lie').removeEventListener('click', lie);
         document.getElementById('btn-quit').removeEventListener('click', comeClean);
       } else {
-        playerScore -= Math.floor(Math.random() * (round + (round / 2) - (round / 2))) + 1;
+        playerScore -= Math.floor(Math.random() * (round * 10)) + 1;
+        console.log(Math.floor(Math.random() * (round * 10)) + 1);
         document.getElementById('story-box').textContent = victims[round] + ' isn\'t buying it. They call you a filthy ' + insults[randInsult] + ' and walk away.';
         showResult();
       }
@@ -133,6 +136,7 @@ function jumper() {
     if(gamePlaying) {
       var randCompliment = Math.floor(Math.random() * compliments.length);
       document.getElementById('story-box').textContent = compliments[randCompliment];
+      roundDifficulty -= Math.floor(Math.random() * ((round) / 2)) + round;
       roundScore -= Math.floor(Math.random() * (30 - 5) + 5);
       suckUps += 1;
       document.getElementById('suck-ups').textContent = suckUps;
