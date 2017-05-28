@@ -1,5 +1,5 @@
 
-var playerScore, luck, suckUps, difficulty, round, roundScore, decision, gamePlaying;
+var playerScore, luck, suckUps, roundDifficulty, round, roundScore, decision, gamePlaying;
 
 var victims = ['Meghan', 'Garrett', 'Nick', 'Austin', 'Gail', 'Adrienne', 'Dan', 'Patti', 'Donna', 'Eric', 'Joanne', 'Amelia', 'Cy'];
 
@@ -37,7 +37,7 @@ function init() {
   playerScore = 0;
   luck = Math.floor(Math.random() * 8) + 1;
   suckUps = 0;
-  difficulty = 0;
+  roundDifficulty = 0;
   round = -1;
   gamePlaying = true;
 
@@ -64,18 +64,21 @@ function jumper() {
   // function to setup next round
   function nextRound() {
     if(round < victims.length) {
-      round += 1;
+      console.log('round pre-increment: ' + round);
+      round++;
+      console.log('round post-increment: ' + round);
 
       // remove next button
       document.getElementById('btn-next').style.visibility = 'hidden';
 
       // set round info
-      roundDifficulty = Math.floor(Math.random() * ((round) * 2)) + round;
+      roundDifficulty = round + (Math.floor(Math.random() * (round + (round / 2) - (round / 2))) + 1);
+      console.log('round difficulty: ' + roundDifficulty);
       roundScore = 10;
 
       // populate round information
       document.getElementById('victim-name').textContent = victims[round];
-      document.getElementById('difficulty').textContent = difficulty;
+      document.getElementById('difficulty').textContent = roundDifficulty;
       document.getElementById('story-box').textContent = 'You run into ' + victims[round] + '. Are you going to try and trick them?';
 
       // make action buttons clickable
@@ -91,13 +94,16 @@ function jumper() {
   function showResult() {
     // show result display
     document.getElementById('result').style.display = 'block';
+    document.getElementById('btn-reset').style.display = 'block';
     document.getElementById('final-score').textContent = playerScore;
-    document.getElementById('btn-reset').addEventListener('click', init);
 
     // remove function of action buttons
     document.getElementById('btn-compliment').removeEventListener('click', compliment);
     document.getElementById('btn-lie').removeEventListener('click', lie);
     document.getElementById('btn-quit').removeEventListener('click', comeClean);
+
+    // show reset button
+    document.getElementById('btn-reset').addEventListener('click', init);
 
     gamePlaying = false;
   }
@@ -106,7 +112,8 @@ function jumper() {
   function lie() {
     if(gamePlaying) {
       var roundLuck = luck + (Math.floor(Math.random() * ((luck + round) - (luck - round))) + 1);
-      var roundDifficulty = round + (Math.floor(Math.random() * (round + (round / 2) - (round / 2))) + 1);
+      console.log('round luck: ' + roundLuck);
+
       var randInsult = Math.floor(Math.random() * insults.length);
 
       document.getElementById('story-box').textContent = story[round];
@@ -123,8 +130,10 @@ function jumper() {
         document.getElementById('btn-lie').removeEventListener('click', lie);
         document.getElementById('btn-quit').removeEventListener('click', comeClean);
       } else {
-        playerScore -= Math.floor(Math.random() * (round * 10)) + 1;
-        console.log(Math.floor(Math.random() * (round * 10)) + 1);
+        // remove points for being caught and send to results
+        var penalty = Math.floor(Math.random() * (round * 10)) + 1;
+        playerScore -= penalty;
+        console.log('penalty for being caught: ' + penalty);
         document.getElementById('story-box').textContent = victims[round] + ' isn\'t buying it. They call you a filthy ' + insults[randInsult] + ' and walk away.';
         showResult();
       }
@@ -137,7 +146,9 @@ function jumper() {
       var randCompliment = Math.floor(Math.random() * compliments.length);
       document.getElementById('story-box').textContent = compliments[randCompliment];
       roundDifficulty -= Math.floor(Math.random() * ((round) / 2)) + round;
-      roundScore -= Math.floor(Math.random() * (30 - 5) + 5);
+      roundScore -= Math.floor(Math.random() * (10 - 5) + 5);
+      console.log('post-compliment difficulty: ' + roundDifficulty);
+      console.log('post-compliment roundScore: ' + roundScore);
       suckUps += 1;
       document.getElementById('suck-ups').textContent = suckUps;
     }
